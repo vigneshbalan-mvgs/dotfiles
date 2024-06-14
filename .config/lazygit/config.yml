@@ -1,0 +1,58 @@
+gui:
+  theme:
+    activeBorderColor:
+      - 239  70  62
+    inactiveBorderColor:
+      - 50   50   50
+    optionsTextColor:
+      - 200  200  200
+    selectedLineBgColor:
+      - 47   79   79
+    selectedLineFgColor:
+      - 255  255  255
+    unselectedLineBgColor:
+      - 40   40   40
+    unselectedLineFgColor:
+      - 200  200  200
+    diffTerminalColor:
+      - 239  70  62
+    diffTerminalFgColor:
+      - 255  255  255
+    inlineDiffColor:
+      - 40   42   54
+    inlineDiffBgColor:
+      - 50   50   50
+    contextBgColor:
+      - 30   30   30
+    contextFgColor:
+      - 150  150  150
+    panelBgColor:
+      - 30   30   30
+    panelFgColor:
+      - 200  200  200
+    panelBorderColor:
+      - 50   50   50
+    mainBgColor:
+      - 28   28   28
+    mainFgColor:
+      - 200  200  200
+    secondaryTextColor:
+      - 150  150  150
+    fileTreeFolderColor:
+      - 203  89   221
+    branchTextColor:
+      - 239  70   62
+    linkTextColor:
+      - 239  70   62
+    borderColor:
+      - 50   50   50
+    textColor:
+      - 255  255  255
+    subPanelBgColor:
+      - 28   28   28
+    subPanelFgColor:
+      - 200  200  200
+    mergeConflictBgColor:
+      - 40   42   54
+    mergeConflictFgColor:
+      - 255  85   85
