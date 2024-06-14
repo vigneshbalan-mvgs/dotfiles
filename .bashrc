@@ -39,6 +39,7 @@ alias msm='mpv "$(fd -e mp3 -e wav -e flac -e aac -e ogg -e m4a | fzf)"'
 #nvim files only
 
 #open function
+#1234
 
 op() {
 	local file
