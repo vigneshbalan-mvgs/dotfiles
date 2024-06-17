@@ -31,6 +31,8 @@ alias btop='btop --utf-force'
 alias gs='git status'
 alias gp='git pull'
 alias gd='git diff'
+alias tof='tmux set-option status off'
+alias ton='tmux set-option status on'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias msv='mpv "$(fd -e mp4 -e mkv -e avi -e mov -e flv -e wmv | fzf)"'
@@ -87,6 +89,9 @@ lsd() {
 }
 lsv() {
 	nvim $(fzf)
+}
+lsz() {
+	zeditor $(fzf)
 }
 
 gc() {
@@ -170,3 +175,4 @@ if [ -f ~/.bash_aliases ]; then
 fi
 
 fastfetch
+export PATH=$HOME/.local/bin:$PATH
