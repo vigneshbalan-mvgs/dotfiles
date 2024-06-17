@@ -215,7 +215,7 @@ bindsym $mod+o exec --no-startup-id /usr/bin/chromium
 bindsym $mod+a exec --no-startup-id alacritty
 bindsym $mod+y exec --no-startup-id kitty nvim
 bindsym $mod+s exec --no-startup-id ~/.config/i3/scripts/volume_brightness.sh volume_up
-bindsym $mod+z exec --no-startup-id ~/.config/i3/scripts/volume_brightness.sh volume_down
+bindsym $mod+z exec --no-startup-id zeditor
 bindsym $mod+x exec --no-startup-id 
 bindsym $mod+v exec --no-startup-id xfce4-clipman-histroy
 bindsym $mod+m exec --no-startup-id bitwarden-desktop
