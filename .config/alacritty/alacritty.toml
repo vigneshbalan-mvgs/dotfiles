@@ -3,7 +3,7 @@
 [env]
 
 [window]
-padding = { x = 10, y = 10 }
+padding = { x = 2, y = 2 }
 dynamic_padding = false
 decorations = "full"
 startup_mode = "Windowed"
