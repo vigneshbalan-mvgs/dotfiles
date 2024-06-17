@@ -93,7 +93,8 @@ bindcode $mod+Shift+90 	 move container to workspace  $ws10
 ######################################
 
 # start a terminal
-bindsym $mod+Return exec --no-startup-id kitty tmux
+bindsym $mod+Return exec --no-startup-id kitty tmux -u
+#bindsym $mod+Return exec --no-startup-id alacritty tmux
 
 # kill focused window
 bindsym $mod+q kill
@@ -369,7 +370,7 @@ exec --no-startup-id /usr/bin/dunst
 # Autostart apps as you like
 exec --no-startup-id sleep 1 && waterfox
 #exec --no-startup-id sleep 3 && chromium
-exec --no-startup-id sleep 5 && kitty tmux
+exec --no-startup-id sleep 5 && kitty tmut
 #exec --no-startup-id sleep 5 && thunderbird
 
 
