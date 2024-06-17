@@ -27,6 +27,8 @@ export PS1="${GREEN}\u${WHITE}@${BLUE}\h${WHITE}:${YELLOW}\w${WHITE}\$ ${RESET}"
 # KeyMaps
 alias ll='ls -la'
 alias la='ls -a'
+alias lg='lazygit'
+alias ld='lazydocker'
 alias btop='btop --utf-force'
 alias gs='git status'
 alias gp='git pull'
