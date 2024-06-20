@@ -11,4 +11,5 @@ zsh,
 ohmyzsh,
 btop,
 ranger,
-
+stow,
+ani-cli,

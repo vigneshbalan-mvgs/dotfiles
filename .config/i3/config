@@ -256,6 +256,7 @@ assign [class="(?i)waterfox"] $ws2
 assign [class="Thunar"] $ws3
 assign [class="Betterbird"] $ws4
 assign [class="TelegramDesktop"] $ws5
+assign [class="mpv"] $ws5
 assign [class="obs"] $ws6
 assign [class="discord"] $ws8
 assign [class="(?i)chromium"] $ws7
@@ -269,6 +270,7 @@ for_window [class="(?i)waterfox"] focus
 for_window [class="Thunar"] focus
 for_window [class="Betterbird"] focus
 for_window [class="TelegramDesktop"] focus
+for_window [class="mpv"] focus
 for_window [class="obs"] focus
 for_window [class="(?i)chromium"] focus
 for_window [class="discord"] focus
@@ -432,7 +434,7 @@ set $lightblue		#5294e2
 set $urgentred		#e53935
 set $white		#ffffff
 set $black		#000000
-set $purple		#e345ff
+set $purple		#e345f0
 set $darkgrey		#383c4a
 set $grey		#b0b5bd
 set $mediumgrey		#8b8b8b
