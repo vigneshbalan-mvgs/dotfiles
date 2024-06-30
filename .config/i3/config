@@ -303,6 +303,7 @@ for_window [class="discord"] focus
 #
 # for custom config:
 exec_always --no-startup-id picom --config  ~/.config/picom.conf
+exec_always --no-startup-id autotiling
 
 #############################################
 # autostart applications/services on login: #
