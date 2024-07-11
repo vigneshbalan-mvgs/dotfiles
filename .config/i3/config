@@ -259,6 +259,7 @@ assign [class="TelegramDesktop"] $ws5
 assign [class="mpv"] $ws6
 assign [class="obs"] $ws6
 assign [class="discord"] $ws8
+assign [class="steam"] $ws9
 assign [class="(?i)chromium"] $ws7
 
 
@@ -272,6 +273,7 @@ for_window [class="Betterbird"] focus
 for_window [class="TelegramDesktop"] focus
 for_window [class="mpv"] focus
 for_window [class="obs"] focus
+for_window [class="steam"] focus
 for_window [class="(?i)chromium"] focus
 for_window [class="discord"] focus
 
@@ -303,7 +305,6 @@ for_window [class="discord"] focus
 #
 # for custom config:
 exec_always --no-startup-id picom --config  ~/.config/picom.conf
-exec_always --no-startup-id autotiling
 
 #############################################
 # autostart applications/services on login: #
@@ -435,7 +436,7 @@ set $lightblue		#5294e2
 set $urgentred		#e53935
 set $white		#ffffff
 set $black		#000000
-set $purple		#e345f0
+set $purple		#b0e5bd
 set $darkgrey		#383c4a
 set $grey		#b0b5bd
 set $mediumgrey		#8b8b8b
@@ -619,7 +620,7 @@ bindsym $mod+r mode "resize"
 #title bar 
 hide_edge_borders smart
 gaps inner 7px
-default_border pixel 3
-default_floating_border pixel 3
-for_window [class="^.*"] border  pixel 3
+default_border pixel 1
+default_floating_border pixel 1
+for_window [class="^.*"] border  pixel 1
 smart_borders on

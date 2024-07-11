@@ -1,5 +1,6 @@
 # dotfiles
-Tools needed 
+
+Tools needed
 neovim,
 tmux,
 kitty,
@@ -13,3 +14,4 @@ btop,
 ranger,
 stow,
 ani-cli,
+cmus,

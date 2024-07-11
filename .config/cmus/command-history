@@ -1,0 +1,7 @@
+q
+bind -f common + vol +10%
+bind common <key> colorscheme
+bind common <key> colorscheme rose-pine
+pl-create love
+a ~/Music
+bind -f common = vol +10%
