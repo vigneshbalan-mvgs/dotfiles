@@ -226,6 +226,11 @@ bindsym Print exec --no-startup-id scrot ~/Pictures/Screenshots/%Y-%m-%d-%T-scre
 
 
 
+## ani
+bindsym $mod+F1 exec --no-startup-id ani-cli --rofi --dub -c
+bindsym $mod+F2 exec --no-startup-id ani-cli --rofi --dub 
+bindsym $mod+F3 exec --no-startup-id ani-cli --rofi 
+
 # Power Profiles menu switcher (rofi)
 bindsym $mod+Shift+p exec --no-startup-id ~/.config/i3/scripts/power-profiles
 bindsym $mod+v exec --no-startup-id ~/.config/rofi/rofi_videos.sh
