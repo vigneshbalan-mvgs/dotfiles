@@ -51,9 +51,8 @@ alias ton='tmux set-option status on'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias tmux='tmux -u'
-alias msv='mpv "$(fd -e mp4 -e mkv -e avi -e mov -e flv -e wmv | fzf)"'
-alias msm='mpv "$(fd -e mp3 -e wav -e flac -e aac -e ogg -e m4a | fzf)"'
-
+alias msv='mpv "$(fd -e mp4 -e mkv -e avi -e mov -e flv -e wmv | fzf -m)"'
+alias msm='mpv "$(fd -e mp3 -e wav -e flac -e aac -e ogg -e m4a | fzf -m)"'
 # Open function
 op() {
   local file

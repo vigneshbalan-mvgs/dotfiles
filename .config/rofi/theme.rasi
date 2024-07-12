@@ -1,0 +1,73 @@
+/* theme.rasi */
+* {
+    background:          #ebb;
+    background-alt:      #ebbcba;
+    foreground:          #e0def4ff;
+    bordercolor:         #26233aff;
+    separatorcolor:      #26233aff;
+    text-color:          #e0def4ff;
+    selected:            rgba(67, 76, 94, 0.8);
+    urgent:              #eb6f92ff;
+    active:              #9ccfd8ff;
+    selected-urgent:     #ea9a97ff;
+    selected-active:     #c4a7e7ff;
+}
+
+window {
+    width: 50%;
+    padding: 10px;
+    border: 2px;
+    border-radius: 10px;
+    border-color: @bordercolor;
+}
+
+mainbox {
+    border: 1px;
+    border-radius: 5px;
+}
+
+textbox {
+    text-color: @text-color;
+}
+
+listview {
+    spacing: 5px;
+    scrollbar: true;
+    scrollbar-width: 10px;
+    padding: 5px;
+    border: 1px;
+    border-radius: 5px;
+}
+
+element {
+    border: 1px;
+    border-radius: 5px;
+    padding: 2px;
+    text-color: @foreground;
+}
+
+element selected {
+    background-color: @selected;
+    text-color: #1c1a22ff;
+}
+
+element urgent {
+    background-color: @urgent;
+}
+
+element active {
+    background-color: @active;
+}
+
+element selected urgent {
+    background-color: @selected-urgent;
+}
+
+element selected active {
+    background-color: @selected-active;
+}
+
+#textbox {
+    text-color: @text-color;
+}
+

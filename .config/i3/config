@@ -1,4 +1,4 @@
-font pango: Noto Sans Regular 14
+font pango: Noto Sans Regular 13
 
 set $mod Mod4
 
@@ -217,9 +217,6 @@ bindsym $mod+a exec --no-startup-id alacritty
 bindsym $mod+y exec --no-startup-id kitty nvim
 bindsym $mod+s exec --no-startup-id ~/.config/i3/scripts/volume_brightness.sh volume_up
 bindsym $mod+z exec --no-startup-id zeditor
-bindsym $mod+x exec --no-startup-id 
-bindsym $mod+v exec --no-startup-id xfce4-clipman-histroy
-bindsym $mod+m exec --no-startup-id bitwarden-desktop
 bindsym $mod+c exec --no-startup-id code
 bindsym $mod+b exec --no-startup-id kitty btop --utf-force
 
@@ -231,7 +228,8 @@ bindsym Print exec --no-startup-id scrot ~/Pictures/Screenshots/%Y-%m-%d-%T-scre
 
 # Power Profiles menu switcher (rofi)
 bindsym $mod+Shift+p exec --no-startup-id ~/.config/i3/scripts/power-profiles
-
+bindsym $mod+v exec --no-startup-id ~/.config/rofi/rofi_videos.sh
+bindsym $mod+x exec --no-startup-id ~/.config/rofi/rofi_audio.sh
 ##########################################
 # configuration for workspace behaviour: #
 ##########################################
@@ -572,7 +570,6 @@ bindsym $mod+Shift+a mode "$mode_system"
 bindsym $mod+F4  exec --no-startup-id $Locker && systemctl suspend, mode "default"
 bindsym $mod+F5  exec --no-startup-id systemctl poweroff -i, mode "default"
 bindsym $mod+F6  exec --no-startup-id systemctl reboot , mode "default"
-bindsym $mod+F3 exec --no-startup-id i3-msg exit, mode "default"
 
 
 exec --no-startup-id picom -b -f 
