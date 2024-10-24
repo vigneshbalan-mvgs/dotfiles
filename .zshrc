@@ -5,14 +5,23 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-export EDITOR=vim
+export EDITOR= zed
+export VISUAL= zed
 export TERMINAL=kitty
 
 # Show all possibilities
 bindkey '^I' expand-or-complete
 
+
+#Andriod
+export ANDROID_SDK_ROOT=/opt/android-sdk
+export ANDROID_HOME=/opt/android-sdk
+export PATH=$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools:$PATH
+
+
 # Aliases
 alias vim="nvim"
+alias zed="zed"
 
 
 source ${(q-)PWD}/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -95,21 +104,24 @@ op() {
 # Find the directory
 lsd() {
   local dir
-  dir=$(find ~ -type d | fzf)
+  dir=$(find ~/*/*/ -type d | fzf)
   [ -n "$dir" ] && cd "$dir"
 }
-
+lsg() {
+  local dir
+  dir=$(ls -d ~/git/*/ | fzf)
+  [ -n "$dir" ] && nvim "$dir"
+}
 lsv() {
   nvim $(fzf)
 }
 
-lsz() {
-  zeditor $(fzf)
+lsw(){
+  local dir
+  dir=$(find ~/git/Work/*/ -type d | fzf)
+  [ -n "$dir" ] && cd "$dir"
 }
 
-gc() {
-  git clone
-}
 
 # Increase history size
 HISTSIZE=10000
@@ -174,6 +186,8 @@ fzf_history_append() {
     echo "No command selected."
   fi
 }
+
+
 zle -N fzf_history_append
 bindkey '^R' fzf_history_append
 
@@ -183,4 +197,4 @@ fi
 
 fastfetch
 export PATH=$HOME/.local/bin:$PATH
-
+export JAVA_HOME=/usr/lib/jvm/java-17-openjdk

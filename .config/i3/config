@@ -96,6 +96,7 @@ bindcode $mod+Shift+90 	 move container to workspace  $ws10
 bindsym $mod+Return exec --no-startup-id kitty tmux -u
 #bindsym $mod+Return exec --no-startup-id alacritty tmux
 
+
 # kill focused window
 bindsym $mod+q kill
 
@@ -211,14 +212,20 @@ bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 
 ## App shortcuts
 bindsym $mod+w exec --no-startup-id /usr/bin/waterfox
-bindsym $mod+n exec --no-startup-id thunar Downloads
+bindsym $mod+n exec --no-startup-id nemo Downloads 
 bindsym $mod+o exec --no-startup-id /usr/bin/chromium
 bindsym $mod+a exec --no-startup-id alacritty
-bindsym $mod+y exec --no-startup-id kitty nvim
+bindsym $mod+y exec --no-startup-id obsidian
 bindsym $mod+s exec --no-startup-id ~/.config/i3/scripts/volume_brightness.sh volume_up
-bindsym $mod+z exec --no-startup-id zeditor
+bindsym $mod+z exec --no-startup-id /home/mvgs/.local/bin/zed
 bindsym $mod+c exec --no-startup-id code
+bindsym $mod+i exec --no-startup-id zen-browser
 bindsym $mod+b exec --no-startup-id kitty btop --utf-force
+
+
+#workspace management
+
+
 
 
 ## Screentshots
@@ -257,11 +264,13 @@ set $ws10 "10:"
 # Assign specific applications to workspaces
 assign [class="kitty"] $ws1
 assign [class="(?i)waterfox"] $ws2
-assign [class="Thunar"] $ws3
+assign [class="(?i)zen"] $ws2
+assign [class="(?i)nemo" instance="nemo"] $ws3
 assign [class="Betterbird"] $ws4
 assign [class="TelegramDesktop"] $ws5
 assign [class="mpv"] $ws6
 assign [class="obs"] $ws6
+assign [class="obsidian"] $ws6
 assign [class="discord"] $ws8
 assign [class="steam"] $ws9
 assign [class="(?i)chromium"] $ws7
@@ -272,7 +281,8 @@ assign [class="(?i)chromium"] $ws7
 # Automatic set focus for new windows if they open on another workspace than the current
 for_window [class="kitty"] focus
 for_window [class="(?i)waterfox"] focus
-for_window [class="Thunar"] focus
+for_window [class="(?i)zen"] focus
+for_window [class="(?i)nemo" instance="nemo"] focus
 for_window [class="Betterbird"] focus
 for_window [class="TelegramDesktop"] focus
 for_window [class="mpv"] focus
@@ -309,6 +319,9 @@ for_window [class="discord"] focus
 #
 # for custom config:
 exec_always --no-startup-id picom --config  ~/.config/picom.conf
+
+
+#exec --no-startup-id caffeine
 
 #############################################
 # autostart applications/services on login: #
@@ -466,8 +479,6 @@ bar {
 		status_command i3blocks -c ~/.config/i3/i3blocks.conf
 	    	position top
 	    	i3bar_command i3bar --transparency
-# it could be that you have no primary display set: set one (xrandr --output <output> --primary)
-# reference: https://i3wm.org/docs/userguide.html#_tray_output
 		    #tray_output primary
 		    tray_padding 0
 
@@ -622,8 +633,10 @@ bindsym $mod+r mode "resize"
 
 #title bar 
 hide_edge_borders smart
-gaps inner 7px
+gaps inner 5px
+smart_gaps on
 default_border pixel 1
 default_floating_border pixel 1
 for_window [class="^.*"] border  pixel 1
 smart_borders on
+focus_on_window_activation urgent
