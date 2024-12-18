@@ -221,6 +221,9 @@ bindsym $mod+z exec --no-startup-id /home/mvgs/.local/bin/zed
 bindsym $mod+c exec --no-startup-id code
 bindsym $mod+i exec --no-startup-id zen-browser
 bindsym $mod+b exec --no-startup-id kitty btop --utf-force
+bindsym $mod+u exec --no-startup-id  /opt/android-studio/bin/studio.sh
+bindsym $mod+m exec --no-startup-id bruno
+
 
 
 #workspace management
@@ -229,7 +232,11 @@ bindsym $mod+b exec --no-startup-id kitty btop --utf-force
 
 
 ## Screentshots
-bindsym Print exec --no-startup-id scrot ~/Pictures/Screenshots/%Y-%m-%d-%T-screenshot.png && notify-send "Screenshot saved to ~/Pictures/Screentshots$(date +"%Y-%m-%d-%T")-screenshot.png"
+#bindsym Print exec --no-startup-id scrot ~/Pictures/Screenshots/%Y-%m-%d-%T-screenshot.png && notify-send "Screenshot saved to ~/Pictures/Screentshots$(date +"%Y-%m-%d-%T")-screenshot.png"
+bindsym Print exec --no-startup-id scrot -e 'xclip -selection clipboard -t image/png -i $f && mv $f ~/Pictures/Screenshots/ && notify-send "Screenshot saved and copied to clipboard"'
+bindsym Shift+Print exec --no-startup-id scrot -u -e 'xclip -selection clipboard -t image/png -i $f && mv $f ~/Pictures/Screenshots/ && notify-send "Screenshot of current window saved and copied to clipboard"'
+bindsym $mod+Print exec --no-startup-id scrot -s -e 'xclip -selection clipboard -t image/png -i $f && mv $f ~/Pictures/Screenshots/ && notify-send "Screenshot of selected area saved and copied to clipboard"'
+
 
 
 
@@ -267,13 +274,17 @@ assign [class="(?i)waterfox"] $ws2
 assign [class="(?i)zen"] $ws2
 assign [class="(?i)nemo" instance="nemo"] $ws3
 assign [class="Betterbird"] $ws4
+assign [class="code"] $ws4
 assign [class="TelegramDesktop"] $ws5
 assign [class="mpv"] $ws6
 assign [class="obs"] $ws6
 assign [class="obsidian"] $ws6
 assign [class="discord"] $ws8
 assign [class="steam"] $ws9
+assign [class="jetbrains-studio"] $ws10
 assign [class="(?i)chromium"] $ws7
+assign [class="bruno"] $ws4
+assign [class="postman"] $ws4
 
 
 # Catch-all assignment for other applications
@@ -284,12 +295,18 @@ for_window [class="(?i)waterfox"] focus
 for_window [class="(?i)zen"] focus
 for_window [class="(?i)nemo" instance="nemo"] focus
 for_window [class="Betterbird"] focus
+for_window [class="code"] focus
 for_window [class="TelegramDesktop"] focus
 for_window [class="mpv"] focus
 for_window [class="obs"] focus
 for_window [class="steam"] focus
 for_window [class="(?i)chromium"] focus
 for_window [class="discord"] focus
+for_window [class="jetbrains-studio"] focus
+for_window [class="bruno"] focus
+for_window [class="obsidian"] focus
+for_window [class="postman"] focus
+
 
 ##############
 # compositor #
@@ -389,9 +406,8 @@ exec --no-startup-id /usr/bin/dunst
 #exec_always --no-startup-id autotiling
 
 # Autostart apps as you like
-#exec --no-startup-id sleep 1 && waterfox
+#exec --no-startup-id sleep 4 && kitty tmux -u
 #exec --no-startup-id sleep 3 && chromium
-#exec --no-startup-id sleep 5 && kitty tmux -u
 #exec --no-startup-id sleep 5 && thunderbird
 
 
@@ -412,7 +428,9 @@ exec --no-startup-id systemctl start bluetooth.service
 #exec --no-startup-id nm-applet
 
 # clipman-applet
-exec --no-startup-id xfce4-clipman
+exec --no-startup-id clipman
+#exec --no-startup-id clipster
+
 
 ##################
 # floating rules #
@@ -480,13 +498,13 @@ bar {
 	    	position top
 	    	i3bar_command i3bar --transparency
 		    #tray_output primary
-		    tray_padding 0
+		    tray_padding 1
 
 # When strip_workspace_numbers is set to yes,
 # any workspace that has a name of the form
 # “[n][:][NAME]” will display only the name.
 strip_workspace_numbers yes
-strip_workspace_name no
+strip_workspace_name yes
 
 		    colors {
 		    separator          $purple
@@ -592,6 +610,7 @@ bindsym $mod+F6  exec --no-startup-id systemctl reboot , mode "default"
 exec --no-startup-id picom -b -f 
 
 
+
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
 
@@ -634,9 +653,9 @@ bindsym $mod+r mode "resize"
 #title bar 
 hide_edge_borders smart
 gaps inner 5px
-smart_gaps on
-default_border pixel 1
+smart_gaps off
+default_border pixel 0
 default_floating_border pixel 1
-for_window [class="^.*"] border  pixel 1
+for_window [class="^.*"] border  pixel 0
 smart_borders on
 focus_on_window_activation urgent

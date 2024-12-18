@@ -5,6 +5,7 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+
 export EDITOR= zed
 export VISUAL= zed
 export TERMINAL=kitty
@@ -12,16 +13,16 @@ export TERMINAL=kitty
 # Show all possibilities
 bindkey '^I' expand-or-complete
 
+eval "$(zoxide init zsh)"
+
 
 #Andriod
-export ANDROID_SDK_ROOT=/opt/android-sdk
-export ANDROID_HOME=/opt/android-sdk
+export ANDROID_SDK_ROOT=/home/mvgs/Android/Sdk
+export ANDROID_HOME=/home/mvgs/Android/Sdk
 export PATH=$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools:$PATH
-
 
 # Aliases
 alias vim="nvim"
-alias zed="zed"
 
 
 source ${(q-)PWD}/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -42,6 +43,71 @@ RESET='%f'
 #\$ '
 ## Ensure Ctrl+P is bound to previous history entry
 bindkey '^P' up-line-or-history
+#git 
+# Basic Git Commands
+alias gs='git status'          # Show the working tree status
+alias gp='git pull'            # Fetch and merge changes from the remote repository
+alias gd='git diff'            # Show changes between commits, working tree, etc.
+alias ga='git add .'           # Stage all changes for the next commit
+alias gc='git commit -m'       # Commit with a message
+alias gco='git checkout'       # Switch branches or restore working tree files
+alias gb='git branch'          # List, create, or delete branches
+alias gcb='git checkout -b'    # Create and switch to a new branch
+
+# Remote Operations
+alias gps='git push'           # Push changes to the remote repository
+alias gcl='git clone'          # Clone a repository into a new directory
+alias gfetch='git fetch'       # Download objects and refs from another repository
+
+# Log and History
+alias gl='git log --oneline'   # Show a concise commit history
+alias glg='git log --graph --oneline --all' # Display commits as a graph with one-line summaries
+alias gsh='git show'           # Show details about a specific commit
+
+# Merging and Rebasing
+alias gmg='git merge'          # Merge branches
+alias grb='git rebase'         # Reapply commits on top of another base tip
+
+# Stashing
+alias gstash='git stash'       # Save changes temporarily
+alias gstashpop='git stash pop' # Apply the most recent stash
+
+# Resetting and Cleaning
+alias grs='git reset'          # Reset the current HEAD to a specified state
+alias grh='git reset --hard'   # Reset and discard all local changes
+alias gclean='git clean -fd'   # Remove untracked files and directories
+
+# Tagging
+alias gtag='git tag'           # List tags
+alias gtagadd='git tag -a'     # Create an annotated tag
+alias gtagpush='git push origin --tags' # Push all tags to the remote
+
+# Cherry-Picking
+alias gcpick='git cherry-pick' # Apply a specific commit from another branch
+
+# Aliases for Quick Updates
+alias gup='git fetch && git pull' # Fetch and pull updates from the remote
+alias gsync='git fetch --all && git pull --all' # Sync all branches with remote
+
+# File Operations
+alias gblame='git blame'       # Show what revision and author last modified each line of a file
+alias gundo='git checkout --'  # Discard local changes in a file
+
+# Branch Cleanup
+alias gbd='git branch -d'      # Delete a branch
+alias gbda='git branch --merged | grep -v "\*" | xargs -n 1 git branch -d' # Delete all merged branches
+
+# Submodules
+alias gsubup='git submodule update --init --recursive' # Initialize and update all submodules
+alias gsubsync='git submodule sync --recursive'        # Sync submodules with remote
+
+# Miscellaneous
+alias gclonebare='git clone --bare'   # Clone a repository as a bare repo
+alias gdiffstaged='git diff --staged' # Show differences of staged changes
+alias gtags='git tag --list'          # List all tags
+
+
+
 # KeyMaps
 alias ll='ls -la'
 alias la='ls -a'
@@ -55,9 +121,6 @@ alias anicr='ani-cli --rofi -c'
 alias anidcr='ani-cli --dub -c --rofi'
 alias anidr='ani-cli --dub --rofi'
 alias btop='btop --utf-force'
-alias gs='git status'
-alias gp='git pull'
-alias gd='git diff'
 alias tof='tmux set-option status off'
 alias ton='tmux set-option status on'
 alias ..='cd ..'
@@ -198,3 +261,10 @@ fi
 fastfetch
 export PATH=$HOME/.local/bin:$PATH
 export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
+
+# bun completions
+[ -s "/home/mvgs/.bun/_bun" ] && source "/home/mvgs/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

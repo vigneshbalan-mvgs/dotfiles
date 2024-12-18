@@ -37,18 +37,21 @@ awk -v type=$TYPE '
 }
 END {
 
-if (type == "swap") {
-		used=(swap_total-swap_free)/1024
+	if (type == "swap") {
+		used = (swap_total - swap_free) / 1024
+		total = swap_total / 1024
 	} else {
-		used=(mem_total-mem_free)/1024
+		used = (mem_total - mem_free) / 1024
+		total = mem_total / 1024
 	}
 
-	# show used memory in MB
-	printf("%.1fMB\n", used)
-  
+	# Calculate percentage of used memory
+	pct = (used / total) * 100
 
-  # color
+	# Show used memory in MB and percentage
+	printf("%.1fMB (%.1f%%)\n", used, pct)
 
+	# Color based on percentage
 	if (pct > 90) {
 		print("#FF0000")
 	} else if (pct > 80) {
@@ -58,4 +61,3 @@ if (type == "swap") {
 	}
 }
 ' /proc/meminfo
-

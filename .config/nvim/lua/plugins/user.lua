@@ -20,15 +20,15 @@ return {
       })
     end,
   },
-  {
-    "stevearc/oil.nvim",
-    config = function()
-      require("oil").setup({
-        -- Add any configuration options here
-        view_options = {
-          show_hidden = true,
-        },
-      })
-    end,
-  },
+  -- {
+  --   "stevearc/oil.nvim",
+  --   config = function()
+  --     require("oil").setup({
+  --       -- Add any configuration options here
+  --       view_options = {
+  --         show_hidden = true,
+  --       },
+  --     })
+  --   end,
+  -- },
 }
