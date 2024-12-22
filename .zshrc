@@ -24,6 +24,8 @@ export PATH=$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$
 # Aliases
 alias vim="nvim"
 
+alias runa="npx expo run:android"
+
 
 source ${(q-)PWD}/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
@@ -46,7 +48,7 @@ bindkey '^P' up-line-or-history
 #git 
 # Basic Git Commands
 alias gs='git status'          # Show the working tree status
-alias gp='git pull'            # Fetch and merge changes from the remote repository
+alias gpl='git pull'            # Fetch and merge changes from the remote repository
 alias gd='git diff'            # Show changes between commits, working tree, etc.
 alias ga='git add .'           # Stage all changes for the next commit
 alias gc='git commit -m'       # Commit with a message
@@ -54,8 +56,35 @@ alias gco='git checkout'       # Switch branches or restore working tree files
 alias gb='git branch'          # List, create, or delete branches
 alias gcb='git checkout -b'    # Create and switch to a new branch
 
+function gps() {
+  # Use the current date and time as the default commit message
+  local msg=${1:-"Commit on $(date '+%Y-%m-%d %H:%M:%S')"}
+
+  # Define Rose Pine-inspired colors
+  local rose="\033[38;5;207m"  # Soft pink
+  local pine="\033[38;5;151m"  # Soft green
+  local gold="\033[38;5;214m"  # Soft gold
+  local reset="\033[0m"
+
+  # Add all changes to the staging area
+  echo -e "${rose}Adding changes...${reset}"
+  git add . || { echo -e "${gold}Git add failed. Exiting.${reset}"; return 1; }
+
+  # Commit the changes with the provided message
+  echo -e "${rose}Committing changes...${reset}"
+  git commit -m "$msg" || { echo -e "${gold}Git commit failed. Exiting.${reset}"; return 1; }
+
+  # Push the changes to the remote repository
+  echo -e "${pine}Pushing to remote...${reset}"
+  git push || { echo -e "${gold}Git push failed. Exiting.${reset}"; return 1; }
+
+  # Success message
+  echo -e "${pine}✔ Git push completed successfully!${reset}"
+}
+
+
 # Remote Operations
-alias gps='git push'           # Push changes to the remote repository
+alias gp='git push'           # Push changes to the remote repository
 alias gcl='git clone'          # Clone a repository into a new directory
 alias gfetch='git fetch'       # Download objects and refs from another repository
 
