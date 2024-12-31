@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Define the directory to search for audio files
-DIRECTORY="${1:-$HOME}"
+DIRECTORY="${1:/mnt/others/Music/}"
 
 # Define the audio file extensions to look for
 AUDIO_EXTENSIONS="mp3|wav|flac|aac|ogg|m4a"
@@ -14,16 +14,8 @@ selected_files=$(fd --extension mp3 --extension wav --extension flac --extension
 
 # Check if any files were selected
 if [ -n "$selected_files" ]; then
-	# Open cmus and clear the current playlist
-	cmus-remote -C "clear"
-
-	# Add selected files to cmus playlist
-	echo "$selected_files" | while IFS= read -r file; do
-		cmus-remote -C "add \"$file\""
-	done
-
-	# Start playing the first selected file
-	cmus-remote -C "play"
+	# Open selected files with MPV
+	echo "$selected_files" | xargs -d '\n' mpv
 else
 	echo "No files selected."
 fi

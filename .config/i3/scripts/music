@@ -1,0 +1,41 @@
+#!/bin/bash
+
+get_current_player() {
+  for p in $(playerctl --list-all); do
+    if [ -n "$(playerctl --player="$p" metadata --format "{{ title }}")" ]; then
+      app_name=$(playerctl --player="$p" metadata --format "{{ applicationName }}")
+      echo "$p - $app_name"
+      return
+    fi
+  done
+}
+
+playerctl_status() {
+  player=$(get_current_player)
+
+  if [ -z "$player" ]; then
+    echo ""
+    return
+  fi
+
+  player_name=$(echo $player | cut -d' ' -f1)
+  app_name=$(echo $player | cut -d' ' -f3-)
+
+  title=$(playerctl --player="$player_name" metadata --format "{{ title }}")
+  status=$(playerctl --player="$player_name" status)
+
+  play_status=0
+  if [ "$status" == "Playing" ]; then
+    play_status=1
+  fi
+
+  case "$status" in
+  "Playing") icon="▶️" color="#00ff00" ;; # Green for playing
+  "Paused") icon="⏸️" color="#ffcc00" ;;  # Yellow for paused
+  *) icon="⏹️" color="#ff0000" ;;         # Red for stopped
+  esac
+
+  echo " $title : $status"
+}
+
+playerctl_status

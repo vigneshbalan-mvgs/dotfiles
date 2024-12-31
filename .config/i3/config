@@ -373,8 +373,6 @@ exec --no-startup-id ~/.screenlayout/monitor.sh
 
 # set wallpaper
 exec --no-startup-id sleep 1 && nitrogen --restore
-# exec --no-startup-id sleep 1 && nitrogen --restore && wal -R && i3-msg reload
-
 #exec --no-startup-id sleep 1 && feh --bg-fill /usr/share/endeavouros/backgrounds/endeavouros-wallpaper.png
 
 # set powersavings for display:
@@ -466,6 +464,11 @@ for_window [class="urxvt"] border pixel 1
 # color settings for bar and windows #
 ######################################
 
+# Define colors variables dynamically from pywal
+######################################
+# color settings for bar and windows #
+######################################
+
 # Define colors variables:
 set $darkbluetrans	#08052b00
 set $darkblue		#08052b
@@ -519,7 +522,6 @@ strip_workspace_name yes
 		urgent_workspace	$urgentred	    	$darkbluetrans	$white		$purple
 	}
 }
-
 # you can add different bars for multidisplay setups on each display:
 # set output HDMI-0 to the display you want the bar, --transparency can be set.
 # Transparency needs rgba color codes to be used where the last two letters are the transparency factor see here:

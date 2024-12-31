@@ -1,0 +1,1 @@
+../../dotfiles/.config/mpv/encoding.rst

@@ -1,0 +1,1 @@
+../../dotfiles/.config/tmux/restore_tmux.sh

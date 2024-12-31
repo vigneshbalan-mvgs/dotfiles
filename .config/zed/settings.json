@@ -1,0 +1,91 @@
+// Zed settings
+{
+  "outline_panel": {
+    "dock": "right"
+  },
+  "assistant": {
+    "default_model": {
+      "provider": "openai",
+      "model": "gpt-4"
+    },
+    "version": "2"
+  },
+  "vim_mode": true,
+
+  "ui_font_size": 13,
+  "buffer_font_size": 13,
+
+  "theme": {
+    "mode": "system",
+    "light": "Zen Abyssal Blur",
+    "dark": "Rosé Pine"
+  },
+
+  "terminal_keybindings": {
+    "ctrl-k": "focus_previous_pane",
+    "ctrl-j": "focus_next_pane"
+  },
+  "editor": {
+    "auto_save": true,
+    "auto_indent": true, // Automatically indent based on code structure
+    "word_wrap": true,
+    "scroll_past_end": true, // Allow scrolling beyond the last line
+    "highlight_current_line": true, // Highlight the current line
+    "bracket_matching": true, // Highlight matching parentheses and brackets
+    "trailing_whitespace_highlight": true, // Highlight trailing whitespaces
+    "trim_trailing_whitespace_on_save": true // Automatically trim on save
+  },
+
+  // Advanced pane and window handling for split management
+  "panes": {
+    "max_splits": 4, // Limit to 4 splits
+    "vim_style_navigation": true // Enable Vim-style split navigation (Ctrl-W h/j/k/l)
+  },
+
+  // Files and search behavior to optimize large project navigation
+  "files": {
+    "exclude": ["node_modules", ".git", "*.log"], // Ignore common directories and files
+    "follow_symlinks": true,
+    "case_sensitive_search": false
+  },
+
+  // Linting and language-specific settings
+  "language_features": {
+    "linting": true, // Enable linting
+    "prettier_on_save": true, // Auto-format files with Prettier on save
+    "cpp": {
+      "include_paths": ["/usr/include", "/usr/local/include"],
+      "compiler_flags": ["-std=c++17", "-Wall"]
+    },
+    "html": {
+      "auto_close_tags": true
+    }
+  },
+
+  // Terminal behavior for running tasks
+  "terminal": {
+    "use_shell_integration": true, // Allow terminal to use system shell
+    "scrollback": 10000, // Large scrollback for terminal history
+    "terminal_font_size": 14, // Separate font size for terminal
+    "use_new_terminal_for_tasks": true // Spawn new terminal for tasks like builds or tests
+  },
+
+  // Git integration for seamless version control
+  "git": {
+    "enable": true,
+    "auto_fetch": true,
+    "show_diff_in_status_bar": true,
+    "blame_highlight": true, // Show git blame information on hover
+    "diff_view": {
+      "side_by_side": true
+    }
+  },
+
+  // Enable plugins for project management and code refactoring
+  "plugins": {
+    "project_manager": true, // Project management plugin for quick switching
+    "code_minimap": true, // Enable a minimap for easier file navigation
+    "quickfix_list": true, // Enable quickfix for viewing errors and search results
+    "refactor_plugin": true // Add plugin for code refactoring
+  }
+}

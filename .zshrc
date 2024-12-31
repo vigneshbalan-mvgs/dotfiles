@@ -21,6 +21,11 @@ export ANDROID_SDK_ROOT=/home/mvgs/Android/Sdk
 export ANDROID_HOME=/home/mvgs/Android/Sdk
 export PATH=$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools:$PATH
 
+#lua
+export LUA_PATH="$HOME/.luarocks/share/lua/5.4/?.lua;$LUA_PATH"
+export LUA_CPATH="$HOME/.luarocks/lib/lua/5.4/?.so;$LUA_CPATH"
+
+
 # Aliases
 alias vim="nvim"
 
@@ -45,7 +50,7 @@ RESET='%f'
 #\$ '
 ## Ensure Ctrl+P is bound to previous history entry
 bindkey '^P' up-line-or-history
-#git 
+
 # Basic Git Commands
 alias gs='git status'          # Show the working tree status
 alias gpl='git pull'            # Fetch and merge changes from the remote repository
@@ -57,7 +62,47 @@ alias gb='git branch'          # List, create, or delete branches
 alias gcb='git checkout -b'    # Create and switch to a new branch
 
 function gps() {
-  # Use the current date and time as the default commit message
+  # Check if the current directory is a Git repository
+  if [ ! -d ".git" ]; then
+    # If not a Git repo, ask the user if they want to create a new repo
+    echo "This is not a Git repository."
+    echo "Do you want to initialize a new repo? (y/n): "
+    read create_repo
+    if [[ "$create_repo" =~ ^[Yy]$ ]]; then
+      # Prompt for the repository name
+      echo "Enter the repository name: "
+      read repo_name
+
+      # Initialize the new Git repository
+      echo -e "${pine}Initializing a new Git repository...${reset}"
+      git init || { echo -e "${gold}Git init failed. Exiting.${reset}"; return 1; }
+
+      # Create a new repository on GitHub using GitHub CLI
+      echo -e "${rose}Creating GitHub repository using 'gh'...${reset}"
+      gh repo create "$repo_name" --public --confirm || { echo -e "${gold}GitHub repo creation failed. Exiting.${reset}"; return 1; }
+
+      # Add the newly created GitHub repository as the remote
+      git remote add origin "https://github.com/vigneshbalan-mvgs/$repo_name.git" || { echo -e "${gold}Failed to add remote. Exiting.${reset}"; return 1; }
+
+      # Proceed with the commit and push
+      echo -e "${rose}Adding changes...${reset}"
+      git add . || { echo -e "${gold}Git add failed. Exiting.${reset}"; return 1; }
+
+      echo -e "${rose}Committing changes...${reset}"
+      git commit -m "Initial commit" || { echo -e "${gold}Git commit failed. Exiting.${reset}"; return 1; }
+
+      echo -e "${pine}Pushing to remote...${reset}"
+      git push -u origin master || { echo -e "${gold}Git push failed. Exiting.${reset}"; return 1; }
+
+      echo -e "${pine}✔ New repository created and pushed successfully!${reset}"
+      return 0
+    else
+      echo -e "${gold}Exiting. Not creating a new repository.${reset}"
+      return 1
+    fi
+  fi
+
+  # Use the current date and time as the default commit message if not provided
   local msg=${1:-"Commit on $(date '+%Y-%m-%d %H:%M:%S')"}
 
   # Define Rose Pine-inspired colors
@@ -81,7 +126,6 @@ function gps() {
   # Success message
   echo -e "${pine}✔ Git push completed successfully!${reset}"
 }
-
 
 # Remote Operations
 alias gp='git push'           # Push changes to the remote repository
@@ -204,6 +248,13 @@ lsg() {
   dir=$(ls -d ~/git/*/ | fzf)
   [ -n "$dir" ] && nvim "$dir"
 }
+
+lsp() {
+  local dir
+  dir=$(ls -d ~/git/personal/*/  | fzf)
+  [ -n "$dir" ] && nvim "$dir"
+}
+
 lsv() {
   nvim $(fzf)
 }

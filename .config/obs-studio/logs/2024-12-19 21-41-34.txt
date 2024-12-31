@@ -1,0 +1,144 @@
+21:41:34.432: Using EGL/X11
+21:41:34.432: CPU Name: AMD Ryzen 5 5600G with Radeon Graphics
+21:41:34.432: CPU Speed: 400.000MHz
+21:41:34.433: Physical Cores: 6, Logical Cores: 12
+21:41:34.433: Physical Memory: 31381MB Total, 26821MB Free
+21:41:34.433: Kernel Version: Linux 6.6.65-1-lts
+21:41:34.433: Distribution: "EndeavourOS" Unknown
+21:41:34.433: Desktop Environment: i3 (i3)
+21:41:34.433: Session Type: x11
+21:41:34.433: Window System: X11.0, Vendor: The X.Org Foundation, Version: 1.21.1
+21:41:34.434: Qt Version: 6.8.1 (runtime), 6.8.1 (compiled)
+21:41:34.434: Portable mode: false
+21:41:34.477: OBS 31.0.0-1 (linux)
+21:41:34.477: ---------------------------------
+21:41:34.491: ---------------------------------
+21:41:34.491: audio settings reset:
+21:41:34.491: 	samples per sec: 48000
+21:41:34.491: 	speakers:        2
+21:41:34.491: 	max buffering:   960 milliseconds
+21:41:34.491: 	buffering type:  dynamically increasing
+21:41:34.492: ---------------------------------
+21:41:34.492: Initializing OpenGL...
+21:41:34.576: Loading up OpenGL on adapter AMD AMD Radeon Graphics (radeonsi, renoir, LLVM 18.1.8, DRM 3.54, 6.6.65-1-lts)
+21:41:34.576: OpenGL loaded successfully, version 4.6 (Core Profile) Mesa 24.3.1-arch1.3, shading language 4.60
+21:41:34.599: ---------------------------------
+21:41:34.600: video settings reset:
+21:41:34.600: 	base resolution:   1920x1080
+21:41:34.600: 	output resolution: 1920x1080
+21:41:34.600: 	downscale filter:  Bicubic
+21:41:34.600: 	fps:               30/1
+21:41:34.600: 	format:            NV12
+21:41:34.600: 	YUV mode:          Rec. 709/Partial
+21:41:34.600: NV12 texture support enabled
+21:41:34.600: P010 texture support not available
+21:41:34.603: Audio monitoring device:
+21:41:34.603: 	name: Default
+21:41:34.603: 	id: default
+21:41:34.604: ---------------------------------
+21:41:34.612: Failed to load 'en-US' text for module: 'decklink-captions.so'
+21:41:34.619: Failed to load 'en-US' text for module: 'decklink-output-ui.so'
+21:41:34.625: A DeckLink iterator could not be created.  The DeckLink drivers may not be installed
+21:41:34.625: Failed to initialize module 'decklink.so'
+21:41:34.743: [pipewire] No capture sources available
+21:41:34.761: v4l2loopback not installed, virtual camera not registered
+21:41:34.802: VAAPI: API version 1.22
+21:41:34.803: FFmpeg VAAPI H264 encoding supported
+21:41:34.806: FFmpeg VAAPI AV1 encoding not supported
+21:41:34.810: FFmpeg VAAPI HEVC encoding supported
+21:41:34.836: QLayout: Attempting to add QLayout "" to QWidget "", which already has a layout
+21:41:34.836: [obs-multi-rtmp] Load config from /home/mvgs/.config/obs-studio/basic/profiles/Untitled/obs-multi-rtmp.json failed
+21:41:34.836: [obs-multi-rtmp] Import config from old version.
+21:41:34.836: DEPRECATION: obs_frontend_get_global_config is deprecated. Read from global or user configuration explicitly instead.
+21:41:34.840: [obs-multi-rtmp] version: 0.6.0.0 by SoraYuki https://github.com/sorayuki/obs-multi-rtmp/
+21:41:34.848: os_dlopen(libnvidia-encode.so.1->libnvidia-encode.so.1): libnvidia-encode.so.1: cannot open shared object file: No such file or directory
+21:41:34.848: 
+21:41:34.848: NVENC not supported
+21:41:34.848: Failed to initialize module 'obs-nvenc.so'
+21:41:34.934: ---------------------------------
+21:41:34.934:   Loaded Modules:
+21:41:34.934:     text-freetype2.so
+21:41:34.934:     rtmp-services.so
+21:41:34.934:     obs-x264.so
+21:41:34.934:     obs-webrtc.so
+21:41:34.934:     obs-vst.so
+21:41:34.934:     obs-transitions.so
+21:41:34.934:     obs-qsv11.so
+21:41:34.934:     obs-outputs.so
+21:41:34.934:     obs-multi-rtmp.so
+21:41:34.934:     obs-libfdk.so
+21:41:34.934:     obs-filters.so
+21:41:34.934:     obs-ffmpeg.so
+21:41:34.934:     linux-v4l2.so
+21:41:34.934:     linux-pulseaudio.so
+21:41:34.934:     linux-pipewire.so
+21:41:34.934:     linux-jack.so
+21:41:34.934:     linux-capture.so
+21:41:34.934:     linux-alsa.so
+21:41:34.934:     image-source.so
+21:41:34.934:     frontend-tools.so
+21:41:34.934:     decklink-output-ui.so
+21:41:34.934:     decklink-captions.so
+21:41:34.934: ---------------------------------
+21:41:34.934: ---------------------------------
+21:41:34.934: Available Encoders:
+21:41:34.934:   Video Encoders:
+21:41:34.934: 	- ffmpeg_svt_av1 (SVT-AV1)
+21:41:34.934: 	- ffmpeg_aom_av1 (AOM AV1)
+21:41:34.934: 	- ffmpeg_vaapi_tex (FFmpeg VAAPI H.264)
+21:41:34.934: 	- hevc_ffmpeg_vaapi_tex (FFmpeg VAAPI HEVC)
+21:41:34.934: 	- obs_x264 (x264)
+21:41:34.934:   Audio Encoders:
+21:41:34.934: 	- ffmpeg_aac (FFmpeg AAC)
+21:41:34.934: 	- ffmpeg_opus (FFmpeg Opus)
+21:41:34.934: 	- ffmpeg_pcm_s16le (FFmpeg PCM (16-bit))
+21:41:34.934: 	- ffmpeg_pcm_s24le (FFmpeg PCM (24-bit))
+21:41:34.934: 	- ffmpeg_pcm_f32le (FFmpeg PCM (32-bit float))
+21:41:34.934: 	- ffmpeg_alac (FFmpeg ALAC (24-bit))
+21:41:34.934: 	- ffmpeg_flac (FFmpeg FLAC (16-bit))
+21:41:34.934: 	- libfdk_aac (libfdk AAC)
+21:41:34.934: ==== Startup complete ===============================================
+21:41:34.983: All scene data cleared
+21:41:34.983: ------------------------------------------------
+21:41:34.986: pulse-input: Server name: 'PulseAudio (on PipeWire 1.2.7) 15.0.0'
+21:41:34.986: pulse-input: Audio format: s32le, 48000 Hz, 2 channels
+21:41:34.986: pulse-input: Started recording from 'alsa_output.pci-0000_0b_00.1.pro-output-3.monitor' (default)
+21:41:34.986: [Loaded global audio device]: 'Desktop Audio'
+21:41:34.987: xshm-input: Geometry 1920x1080 @ 0,0
+21:41:34.988: xshm-input: Geometry 1920x1080 @ 0,0
+21:41:34.990: Switched to scene 'Scene'
+21:41:34.990: ------------------------------------------------
+21:41:34.990: Loaded scenes:
+21:41:34.990: - scene 'Scene':
+21:41:34.990:     - source: 'Display Capture (XSHM)' (xshm_input)
+21:41:34.990: - scene 'Scene 2':
+21:41:34.990:     - source: 'Screen Capture (XSHM)' (xshm_input)
+21:41:34.990: ------------------------------------------------
+21:41:35.537: adding 21 milliseconds of audio buffering, total audio buffering is now 21 milliseconds (source: Desktop Audio)
+21:41:35.537: 
+21:41:43.907: Get on org.freedesktop.portal.Settings returned an invalid reply
+21:41:43.907: Get on org.freedesktop.portal.Settings returned an invalid reply
+21:48:14.196: User switched to scene 'Scene 2'
+21:48:14.748: User switched to scene 'Scene'
+21:48:20.172: xshm-input: Geometry 1920x1080 @ 0,0
+21:49:05.472: xshm-input: Geometry 1920x1080 @ 0,0
+21:49:12.260: QLayout: Attempting to add QLayout "" to QWidget "", which already has a layout
+21:49:12.260: [obs-multi-rtmp] Invalid protocol "", maybe broken config file.
+21:49:12.339: [obs-multi-rtmp] Invalid protocol "", maybe broken config file.
+21:49:22.055: [obs-multi-rtmp] Save 1 targets, 0 video configs, 0 audio configs
+21:49:22.055: [obs-multi-rtmp] Save config into /home/mvgs/.config/obs-studio/basic/profiles/Untitled/obs-multi-rtmp.json
+21:50:19.165: QLayout: Attempting to add QLayout "" to QWidget "", which already has a layout
+21:50:19.165: [obs-multi-rtmp] Invalid protocol "", maybe broken config file.
+21:50:19.167: [obs-multi-rtmp] Invalid protocol "", maybe broken config file.
+21:50:21.199: [obs-multi-rtmp] Save 2 targets, 0 video configs, 0 audio configs
+21:50:21.199: [obs-multi-rtmp] Save config into /home/mvgs/.config/obs-studio/basic/profiles/Untitled/obs-multi-rtmp.json
+21:50:24.735: User switched to scene 'Scene 2'
+21:50:25.456: User switched to scene 'Scene'
+21:50:25.991: User switched to scene 'Scene 2'
+21:50:26.351: User switched to scene 'Scene'
+21:50:26.654: User switched to scene 'Scene 2'
+21:50:28.696: User switched to scene 'Scene'
+21:50:29.103: User switched to scene 'Scene 2'
+21:50:29.368: User switched to scene 'Scene'
+21:50:29.566: User switched to scene 'Scene 2'
+21:50:29.792: User switched to scene 'Scene'

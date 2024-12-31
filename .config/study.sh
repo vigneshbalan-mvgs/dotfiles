@@ -1,1 +1,0 @@
-i3/sessions/study.sh

@@ -1,52 +1,47 @@
 #!/bin/bash
 
 # Function to get the current active player
-function get_current_player() {
-  # List all available players
-  players=$(playerctl --list-all)
-
-  # Check if any player is playing media
-  for player in $players; do
-    # Get the title of the current media
-    title=$(playerctl --player="$player" metadata --format "{{ title }}")
-    if [ -n "$title" ]; then
-      echo $player
+get_current_player() {
+  for p in $(playerctl --list-all); do
+    if [ -n "$(playerctl --player="$p" metadata --format "{{ title }}")" ]; then
+      echo $p
       return
     fi
   done
 }
 
-function playerctl_status() {
-  # Get the current active player
-  local player=$(get_current_player)
+# Function to handle playerctl status or open cmus when clicked
+playerctl_status() {
+  player=$(get_current_player)
 
-  # If no player is detected, show an error
+  # If no player is active, show a clickable message to open cmus
   if [ -z "$player" ]; then
-    echo "{\"full_text\": \"No player active\", \"color\": \"#ff0000\"}"
+    echo "{\"full_text\": \"No player active. Click to open cmus.\", \"color\": \"#ff0000\", \"clickable\": \"true\"}"
     return
   fi
 
-  # Get song metadata
-  local title=$(playerctl --player="$player" metadata --format "{{ title }}")
-  local artist=$(playerctl --player="$player" metadata --format "{{ artist }}")
-  local album=$(playerctl --player="$player" metadata --format "{{ album }}")
-  local status=$(playerctl --player="$player" status)
+  # Get song metadata when a player is active
+  title=$(playerctl --player="$player" metadata --format "{{ title }}")
+  artist=$(playerctl --player="$player" metadata --format "{{ artist }}")
+  album=$(playerctl --player="$player" metadata --format "{{ album }}")
+  status=$(playerctl --player="$player" status)
 
   # Set the icon and color based on play/pause state
-  if [ "$status" = "Playing" ]; then
-    icon="▶️"       # Play icon for playing state
-    color="#00ff00" # Green for playing
-  elif [ "$status" = "Paused" ]; then
-    icon="⏸️"       # Pause icon for paused state
-    color="#ffcc00" # Yellow for paused
-  else
-    icon="⏹️"       # Stop icon for stopped state
-    color="#ff0000" # Red for stopped
-  fi
+  case "$status" in
+  "Playing") icon="▶️" color="#00ff00" ;; # Green for playing
+  "Paused") icon="⏸️" color="#ffcc00" ;;  # Yellow for paused
+  *) icon="⏹️" color="#ff0000" ;;         # Red for stopped
+  esac
 
-  # Output the current song info with artist and album, play/pause, and icon
+  # Output the current song info with artist and album
   echo "{\"full_text\": \"$icon $title - $artist ($album)\", \"color\": \"$color\"}"
 }
 
-# Run the function
+# Open cmus in Alacritty when clicked
+if [ "$1" == "cmus" ]; then
+  alacritty -e cmus &
+  exit 0
+fi
+
+# Run the playerctl_status function
 playerctl_status

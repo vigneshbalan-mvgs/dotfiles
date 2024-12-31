@@ -1,4 +1,17 @@
+live-filter L
+hide playlist
+hide
+live-filter 
 q
+wq
+add /mnt/others/Music/
+fset ogg-or-mp3=ogg|mp3
+fset unheard=play_count=0
+fset ogg=filename="*.ogg"
+fset missing-tag=!stream&(artist=""|album=""|title=""|tracknumber=-1|date=-1)
+fset 90s=date>=1990&date<2000
+fset mp3=filename="*.mp3"
+fset mp3=filename="*.mp3"kkk
 bind -f common + vol +10%
 bind common <key> colorscheme
 bind common <key> colorscheme rose-pine

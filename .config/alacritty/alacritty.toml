@@ -6,7 +6,7 @@ padding = { x = 2, y = 2 }
 dynamic_padding = false
 decorations = "full"
 startup_mode = "Windowed"
-opacity = 0.8
+opacity = 0.6
 
 [font]
 normal = { family = "JetBrainsMono Nerd Font", style = "Regular" }
@@ -32,7 +32,7 @@ bindings = [
   { key = "J", mods = "Control|Shift", action = "ScrollPageDown" }
 ]
 
-[shell]
+[terminal.shell]
 program = "/bin/zsh"
 args = ["--login"]
 
@@ -73,4 +73,6 @@ blue = "0xa06fd4"
 magenta = "0xb4637a"
 cyan = "0x61849c"
 white = "0x908caa"
+
+[terminal]
 

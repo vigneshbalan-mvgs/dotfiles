@@ -1,0 +1,62 @@
+#!/usr/bin/env bash
+
+# Check if dependencies are installed
+check_dependency() {
+  if ! command -v "$1" &>/dev/null; then
+    echo "$1 is not installed."
+    exit 1
+  fi
+}
+
+check_dependency playerctl
+check_dependency cmus-remote
+check_dependency alacritty
+
+# Get metadata from the current player
+title=$(playerctl metadata title 2>/dev/null)
+player=$(playerctl metadata --format '{{playerName}}' 2>/dev/null)
+
+# Handle button clicks
+case $BLOCK_BUTTON in
+1) # Left click to toggle play/pause
+  playerctl play-pause
+  ;;
+3) # Right click to skip to the next song
+  playerctl next
+  ;;
+4) # Scroll up to switch to the next running player
+  # Get a list of all running players
+  players=$(playerctl -l 2>/dev/null)
+  current_index=$(echo "$players" | grep -n "^$player$" | cut -d: -f1)
+  next_player=$(echo "$players" | sed -n "$((current_index + 1))p")
+  if [[ -n "$next_player" ]]; then
+    playerctl -p "$next_player" metadata title &>/dev/null && player="$next_player"
+  else
+    next_player=$(echo "$players" | head -n 1) # Loop back to the first player
+    playerctl -p "$next_player" metadata title &>/dev/null && player="$next_player"
+  fi
+  ;;
+5) # Scroll down to switch to the previous running player
+  # Get a list of all running players
+  players=$(playerctl -l 2>/dev/null)
+  current_index=$(echo "$players" | grep -n "^$player$" | cut -d: -f1)
+  prev_player=$(echo "$players" | sed -n "$((current_index - 1))p")
+  if [[ -n "$prev_player" ]]; then
+    playerctl -p "$prev_player" metadata title &>/dev/null && player="$prev_player"
+  else
+    prev_player=$(echo "$players" | tail -n 1) # Loop back to the last player
+    playerctl -p "$prev_player" metadata title &>/dev/null && player="$prev_player"
+  fi
+  ;;
+2) # Middle click to open CMUS in Alacritty
+  alacritty -e cmus
+  ;;
+esac
+
+# Display current media status
+if [[ -n "$player" ]]; then
+  first_two_words=$(echo "$title" | awk '{print $1, $2}')
+  echo "$first_two_words       $player"
+else
+  echo "No media playing."
+fi
